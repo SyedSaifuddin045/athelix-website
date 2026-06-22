@@ -88,15 +88,15 @@ export function WaitlistForm() {
                 <div className="flex gap-3">
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-black text-xs font-bold flex items-center justify-center mt-0.5">2</span>
                   <div>
-                    <p className="font-medium text-white">Install the app</p>
+                    <p className="font-medium text-white">Opt in as tester &amp; install</p>
                     <a href={playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-accent hover:underline mt-1">
-                      Open Play Store <ExternalLink size={12} />
+                      Join on Google Play <ExternalLink size={12} />
                     </a>
                   </div>
                 </div>
               )}
               {!playUrl && (
-                <p className="text-faint text-xs italic">Step 2 will appear here once the app is available on Google Play.</p>
+                <p className="text-faint text-xs italic">Step 2 will appear once the test link is configured.</p>
               )}
             </div>
           </div>
