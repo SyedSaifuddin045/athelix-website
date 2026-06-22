@@ -21,7 +21,7 @@ export function WaitlistForm() {
     setMessage("");
 
     try {
-      const res = await fetch("https://api.athelix.fit/api/v1/waitlist", {
+      const res = await fetch("https://api.athelix.fit/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), email: email.trim() }),
