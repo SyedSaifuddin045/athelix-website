@@ -12,6 +12,7 @@ export function WaitlistForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [joinUrl, setJoinUrl] = useState("");
+  const [playUrl, setPlayUrl] = useState("");
   const ref = useScrollReveal<HTMLDivElement>();
 
   async function handleSubmit(e: FormEvent) {
@@ -34,6 +35,7 @@ export function WaitlistForm() {
         setStatus("success");
         setMessage("You're on the list! We'll be in touch soon.");
         if (data.join_url) setJoinUrl(data.join_url);
+        if (data.play_url) setPlayUrl(data.play_url);
       } else {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Please try again.");
@@ -67,20 +69,36 @@ export function WaitlistForm() {
         </div>
 
         {status === "success" ? (
-          <div className="mt-10 p-6 rounded-2xl bg-green/10 border border-green/20 space-y-4">
-            <CheckCircle size={32} className="text-green mx-auto mb-3" />
+          <div className="mt-10 p-6 rounded-2xl bg-green/10 border border-green/20 space-y-5">
+            <CheckCircle size={32} className="text-green mx-auto" />
             <p className="text-green font-body font-medium">{message}</p>
-            {joinUrl && (
-              <a
-                href={joinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-heading text-sm font-semibold tracking-widest uppercase px-6 py-3 rounded-full bg-accent text-black hover:bg-accent/90 transition-all duration-300"
-              >
-                Join testing group
-                <ExternalLink size={14} />
-              </a>
-            )}
+            <div className="text-left space-y-4 text-sm font-body text-white/80">
+              <div className="flex gap-3">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-black text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                <div>
+                  <p className="font-medium text-white">Join the testing group</p>
+                  {joinUrl && (
+                    <a href={joinUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-accent hover:underline mt-1">
+                      {joinUrl} <ExternalLink size={12} />
+                    </a>
+                  )}
+                </div>
+              </div>
+              {playUrl && (
+                <div className="flex gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-black text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                  <div>
+                    <p className="font-medium text-white">Install the app</p>
+                    <a href={playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-accent hover:underline mt-1">
+                      Open Play Store <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </div>
+              )}
+              {!playUrl && (
+                <p className="text-faint text-xs italic">Step 2 will appear here once the app is available on Google Play.</p>
+              )}
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 space-y-4">
