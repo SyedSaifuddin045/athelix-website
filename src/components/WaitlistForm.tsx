@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useScrollReveal } from "@/lib/useScrollReveal";
-import { CheckCircle, Loader2, AlertCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, Loader2, AlertCircle, ArrowRight, ExternalLink } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -11,6 +11,7 @@ export function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [joinUrl, setJoinUrl] = useState("");
   const ref = useScrollReveal<HTMLDivElement>();
 
   async function handleSubmit(e: FormEvent) {
@@ -32,6 +33,7 @@ export function WaitlistForm() {
       if (res.ok) {
         setStatus("success");
         setMessage("You're on the list! We'll be in touch soon.");
+        if (data.join_url) setJoinUrl(data.join_url);
       } else {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Please try again.");
@@ -65,9 +67,20 @@ export function WaitlistForm() {
         </div>
 
         {status === "success" ? (
-          <div className="mt-10 p-6 rounded-2xl bg-green/10 border border-green/20">
+          <div className="mt-10 p-6 rounded-2xl bg-green/10 border border-green/20 space-y-4">
             <CheckCircle size={32} className="text-green mx-auto mb-3" />
             <p className="text-green font-body font-medium">{message}</p>
+            {joinUrl && (
+              <a
+                href={joinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-heading text-sm font-semibold tracking-widest uppercase px-6 py-3 rounded-full bg-accent text-black hover:bg-accent/90 transition-all duration-300"
+              >
+                Join testing group
+                <ExternalLink size={14} />
+              </a>
+            )}
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-10 space-y-4">
