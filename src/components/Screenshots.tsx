@@ -37,14 +37,11 @@ export function Screenshots() {
               key={src}
               className="snap-center shrink-0 first:pl-0 last:pr-0"
             >
-              <div className="relative w-[220px] h-[460px] rounded-[28px] bg-screen border border-border-light overflow-hidden shadow-lg">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] h-[24px] bg-black rounded-b-2xl z-10" />
-                <img
-                  src={src}
-                  alt={`Athelix screenshot ${i + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <img
+                src={src}
+                alt={`Athelix screenshot ${i + 1}`}
+                className="w-[220px] h-[460px] rounded-2xl border border-border-light shadow-lg object-cover transition-transform duration-300 hover:scale-[1.02]"
+              />
             </div>
           ))}
         </div>
