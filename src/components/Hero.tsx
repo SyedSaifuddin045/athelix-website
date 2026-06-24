@@ -42,7 +42,7 @@ export function Hero() {
               onClick={scrollToForm}
               className="font-heading text-sm font-semibold tracking-widest uppercase px-8 py-3.5 rounded-full bg-accent text-black hover:bg-accent/90 transition-all duration-300 animate-glow-pulse"
             >
-              Get Early Access
+              Get the App
             </button>
 
             <div className="flex items-center gap-4">
@@ -62,7 +62,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 text-xs text-faint font-body">
-            Coming soon. Join the waitlist for early access.
+            Available now on Android. Join the testing group to get started.
           </p>
         </div>
 

@@ -36,12 +36,12 @@ export function Nav() {
           </span>
         </a>
 
-        <button
-          onClick={scrollToForm}
-          className="font-heading text-sm font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full bg-accent text-black hover:bg-accent/90 transition-all duration-300 animate-glow-pulse"
-        >
-          Join Waitlist
-        </button>
+          <button
+            onClick={scrollToForm}
+            className="font-heading text-sm font-semibold tracking-wider uppercase px-5 py-2.5 rounded-full bg-accent text-black hover:bg-accent/90 transition-all duration-300 animate-glow-pulse"
+          >
+            Get the App
+          </button>
       </div>
     </nav>
   );
